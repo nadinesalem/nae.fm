@@ -18,7 +18,7 @@ def lfmGet(payload):
     payload['user'] = username
     payload['api_key'] = apiKey
     payload['format'] = 'json'
-    payload['limit'] = '1'
+    payload['limit'] = '10'
 
 
     response = requests.get(url, headers=headers, params=payload)
@@ -28,12 +28,13 @@ while on:
     jsonData = lfmGet({'method': 'user.getRecentTracks'})
     obj = json.loads(jsonData.content.decode('utf-8'))
     newNP = (obj['recenttracks']['track'][1]['date'])
-    if newNP != oldNP:
-        contents = f"@flexiimusic is currently listening to {str(obj['recenttracks']['track'][0]['name'])} by {str(obj['recenttracks']['track'][0]['artist']['#text'])}!"
-        pushTweet.tweetSong(contents)
+    date = obj['recenttracks']['track'][1]['date']['#text']
 
+    if newNP != oldNP:
+        contents = f".@flexiimusic is currently listening to {str(obj['recenttracks']['track'][0]['name'])} by {str(obj['recenttracks']['track'][0]['artist']['#text'])}!! ({date[-5:]})"
+        #print(contents)
+        pushTweet.tweetSong(contents)
     else:
-        print('still playing same song!!')
+        print('still playing same song!!', date)
     oldNP = newNP
-    print(contents)
-    time.sleep(60)
+    time.sleep(30)
