@@ -1,7 +1,5 @@
-# What is flexii listening to :D
-  [@flexiilfm](https://twitter.com/flexiilfm) on twitter
-  
-  Pulls from Last.FM API from a specified user and tweets the currently playing song.
-
-  Requires tweepy, python 3.10
+# nae's song of the day! 
+twitter: https://twitter.com/naemp3
+last.fm: https://www.last.fm/user/naesalem
+# this program tweets nae's top song of the day. requires tweepy and python to run.
 
